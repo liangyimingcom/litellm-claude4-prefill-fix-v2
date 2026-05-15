@@ -1,0 +1,3 @@
+FROM 153705321444.dkr.ecr.us-east-1.amazonaws.com/litellm:main-v1.82.3-stable.patch.2
+
+COPY custom_callbacks.py /app/custom_callbacks.py
