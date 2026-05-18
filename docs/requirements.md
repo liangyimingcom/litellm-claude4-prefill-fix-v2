@@ -189,10 +189,10 @@ class AppendContinueCallback(CustomLogger):
 
 | 项目 | 值 |
 |------|-----|
-| AWS Profile | `oversea1` |
+| AWS Profile | `YOUR_PROFILE` |
 | Region | `us-east-1` |
-| 端点 | `https://alblitellm.liangym.people.aws.dev/v1/messages` |
-| API Key | `sk-d0Ja3QFEGY4xoev1_W8FwQ` |
+| 端点 | `https://YOUR_LITELLM_ENDPOINT/v1/messages` |
+| API Key | `sk-YOUR_API_KEY` |
 | 模型 | `claude-sonnet-4-6` |
 
 ### 5.2 测试用例
@@ -223,8 +223,8 @@ class AppendContinueCallback(CustomLogger):
 
 **T1 — 正常 user 结尾（不应触发）**:
 ```bash
-curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
-  -H "x-api-key: sk-d0Ja3QFEGY4xoev1_W8FwQ" \
+curl -s https://YOUR_LITELLM_ENDPOINT/v1/messages \
+  -H "x-api-key: sk-YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
@@ -238,8 +238,8 @@ curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
 
 **T2 — assistant 结尾（应触发追加 continue）**:
 ```bash
-curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
-  -H "x-api-key: sk-d0Ja3QFEGY4xoev1_W8FwQ" \
+curl -s https://YOUR_LITELLM_ENDPOINT/v1/messages \
+  -H "x-api-key: sk-YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
@@ -254,8 +254,8 @@ curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
 
 **T6 — 生产样例：text + tool_use(read)（最常见 40%）**:
 ```bash
-curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
-  -H "x-api-key: sk-d0Ja3QFEGY4xoev1_W8FwQ" \
+curl -s https://YOUR_LITELLM_ENDPOINT/v1/messages \
+  -H "x-api-key: sk-YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
@@ -273,8 +273,8 @@ curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
 
 **T7 — 生产样例：纯 tool_use(bash)（代码执行类 40%）**:
 ```bash
-curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
-  -H "x-api-key: sk-d0Ja3QFEGY4xoev1_W8FwQ" \
+curl -s https://YOUR_LITELLM_ENDPOINT/v1/messages \
+  -H "x-api-key: sk-YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
@@ -291,8 +291,8 @@ curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
 
 **T9 — 生产样例：空 assistant 消息（SDK 追加空 prefill）**:
 ```bash
-curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
-  -H "x-api-key: sk-d0Ja3QFEGY4xoev1_W8FwQ" \
+curl -s https://YOUR_LITELLM_ENDPOINT/v1/messages \
+  -H "x-api-key: sk-YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -H "anthropic-version: 2023-06-01" \
   -d '{
@@ -334,10 +334,10 @@ curl -s https://alblitellm.liangym.people.aws.dev/v1/messages \
 
 | 产物 | 值 |
 |------|-----|
-| ECR Image | `153705321444.dkr.ecr.us-east-1.amazonaws.com/litellm:prefill-fix-v2` |
+| ECR Image | `YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/litellm:prefill-fix-v2` |
 | Image Digest | `sha256:46144fbc8258d16ef7ae37475413f85144bf1f059e210aee58ff0832dc25ce7d` |
 | Task Definition | `litellm-stack-fargate-task:12` |
-| 开发 EC2 | `i-06f6495dc1945fd61` (54.162.209.11) |
+| 开发 EC2 | `i-xxxxxxxxxxxxx` (x.x.x.x) |
 
 ### 测试结果摘要
 

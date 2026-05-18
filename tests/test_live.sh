@@ -2,8 +2,8 @@
 # AppendContinueCallback v2 — 完整测试矩阵（含生产样例）
 # Usage: ./test_live.sh [ENDPOINT] [API_KEY]
 
-ENDPOINT="${1:-https://alblitellm.liangym.people.aws.dev/v1/messages}"
-API_KEY="${2:-sk-d0Ja3QFEGY4xoev1_W8FwQ}"
+ENDPOINT="${1:-https://YOUR_LITELLM_ENDPOINT/v1/messages}"
+API_KEY="${2:-sk-YOUR_API_KEY}"
 PASS=0; FAIL=0
 
 run() {

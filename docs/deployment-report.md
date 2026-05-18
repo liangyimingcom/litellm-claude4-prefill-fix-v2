@@ -37,13 +37,13 @@ flowchart TD
 | 步骤 | 操作 | 结果 |
 |------|------|------|
 | 1 | 调查 ECS 配置 | cluster=litellm-stack-cluster, service=LiteLLMService, task-def:6 |
-| 2 | 启动 EC2 (i-00b88fd90a3c69fb0) | AL2023, t3.medium, us-east-1a |
+| 2 | 启动 EC2 (i-xxxxxxxxxxxxx) | AL2023, t3.medium, us-east-1a |
 | 3 | Docker build + push (第一版) | ✅ sha256:3f0a491c... |
 | 4 | 注册 task-def:12, 更新 service | ✅ 2 tasks running |
 | 5 | 运行测试 T1/T2/T9 | ✅ 通过 |
 | 6 | 运行测试 T6/T7 | ❌ 400 tool_use without tool_result |
 | 7 | **修复代码**: tool_use → append tool_result | 代码更新 |
-| 8 | 启动 EC2 (i-0ff03d6f83226b1a8) | 重新构建 |
+| 8 | 启动 EC2 (i-xxxxxxxxxxxxx) | 重新构建 |
 | 9 | Docker build + push (第二版) | ✅ sha256:46144fbc... |
 | 10 | force-new-deployment | ✅ 2 tasks running |
 | 11 | 运行全部测试 T1/T2/T6/T7/T9 | ✅ **5/5 通过** |
@@ -114,10 +114,10 @@ graph LR
 
 | 产物 | 值 |
 |------|-----|
-| ECR Image | `153705321444.dkr.ecr.us-east-1.amazonaws.com/litellm:prefill-fix-v2` |
+| ECR Image | `YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/litellm:prefill-fix-v2` |
 | Image Digest | `sha256:46144fbc8258d16ef7ae37475413f85144bf1f059e210aee58ff0832dc25ce7d` |
-| Task Definition | `litellm-stack-fargate-task:12` |
-| S3 Config | `s3://litellm-config-20260411101252843700000006/config.yaml` (含 callbacks) |
+| Task Definition | `YOUR_NEW_TASK_DEF` |
+| S3 Config | `s3://YOUR_CONFIG_BUCKET/config.yaml` (含 callbacks) |
 | 回调文件 | `/app/custom_callbacks.py` (baked in image) |
 
 ---
@@ -149,7 +149,7 @@ flowchart LR
 aws ecs update-service \
   --cluster litellm-stack-cluster \
   --service LiteLLMService \
-  --task-definition litellm-stack-fargate-task:6 \
+  --task-definition YOUR_PREVIOUS_TASK_DEF \
   --force-new-deployment \
-  --profile oversea1 --region us-east-1
+  --profile YOUR_PROFILE --region us-east-1
 ```

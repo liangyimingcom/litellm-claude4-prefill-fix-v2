@@ -1,7 +1,7 @@
 # AppendContinueCallback v2 — 生产样例测试矩阵报告
 
 **测试时间**: 2026-05-15 22:50 CST  
-**测试环境**: Testing (alblitellm.liangym.people.aws.dev)  
+**测试环境**: Testing (YOUR_LITELLM_ENDPOINT)  
 **测试结果**: ✅ **11/12 通过**（1 个环境配置问题，非代码缺陷）
 
 ---
